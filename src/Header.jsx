@@ -15,15 +15,16 @@ class Header extends Component {
 
   unshiftRecord(event) {
     if(!this.idvalue.value || !this.namevalue.value || this.state.headerTitle  === 'Color') {
-      this.idvalue.focus();
       window.alert("Input data error, please input again");
+      this.idvalue.focus();
+      return;
     }
     const item = { id: this.idvalue.value, name: this.namevalue.value, color: this.state.headerTitle };
     let list = JSON.parse(localStorage.getItem('selfList') || '[]');
     list.unshift(item);
     localStorage.setItem('selfList', JSON.stringify(list));
     this.emptyRecord();
-    this.props.loadList();
+    this.props.loadListFunc();
     event.stopPropagation();
   }
 
@@ -97,7 +98,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-
+  loadListFunc: PropTypes.func.isRequired
 };
 
 export default Header;

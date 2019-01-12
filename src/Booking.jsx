@@ -26,7 +26,7 @@ class Booking extends Component {
   render() {
     return (
       <div className="booking">
-        <Header loadList={() => this.loadListFromLocalstorage()}/>
+        <Header loadListFunc={() => this.loadListFromLocalstorage()}/>
         <Body list={this.state.list} />
       </div>
     );

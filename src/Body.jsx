@@ -4,14 +4,6 @@ import PropTypes from 'prop-types';
 import RecordItem from './RecordItem';
 
 class Body extends Component {
-
-  // componentWillMount() {
-  //   const list = JSON.parse(localStorage.getItem('selfList') || '[]');
-  //   this.setState({
-  //     list
-  //   });
-  // }
-  
   render() {
     const { list } = this.props;
     return (
