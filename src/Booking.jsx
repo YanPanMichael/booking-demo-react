@@ -23,6 +23,16 @@ class Booking extends Component {
     });
   }
 
+  getChildContext() {
+    return {
+      fontWeight: 700
+    }
+  }
+
+  static childContextTypes = {
+    fontWeight: PropTypes.number
+  }
+
   render() {
     return (
       <div className="booking">
