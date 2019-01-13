@@ -11,6 +11,7 @@ class Header extends Component {
     this.unshiftRecord = this.unshiftRecord.bind(this);
     this.toggleList = this.toggleList.bind(this);
     this.changeHeaderTitle = this.changeHeaderTitle.bind(this);
+    this.closeDropDown = this.closeDropDown.bind(this);
   }
 
   unshiftRecord(event) {
@@ -34,18 +35,25 @@ class Header extends Component {
     this.setState({headerTitle: 'Color'});
   }
 
-  toggleList() {
+  toggleList(event) {
     this.setState(prevState => ({
       listOpen: !prevState.listOpen
-    }))
+    }));
   }
 
   changeHeaderTitle(event) {
     this.setState({
-      listOpen: false,
-      headerTitle: event.target.innerText
-    });    
+      headerTitle: event.target.innerText,
+      listOpen: false
+    });
     event.stopPropagation();
+    event.nativeEvent.stopImmediatePropagation();
+  }
+
+  closeDropDown(event) {
+    this.setState({
+      listOpen: false
+    });
   }
 
   render() {
@@ -67,12 +75,12 @@ class Header extends Component {
                 <input type="text" className="form-control" id="booking-name" ref={rel => this.namevalue = rel} placeholder="input name" />
               </div>
 
-              <div className="btn-group">
+              <div className="btn-group" onBlur={this.closeDropDown}>
                 {/* <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> */}
                 <button type="button" className="btn btn-default dropdown-toggle" onClick={this.toggleList}>
                   {headerTitle} <span className={listOpen?"upret":"caret"}></span>
                 </button>
-                <ul className="dropdown-menu" style={{display: listOpen?"block":"none"}} onClick={this.changeHeaderTitle}>
+                <ul className="dropdown-menu" style={{display: listOpen?"block":"none"}} onMouseDown={this.changeHeaderTitle} >
                   <li><a href="#">Red</a></li>
                   <li><a href="#">Black</a></li>
                   <li><a href="#">White</a></li>

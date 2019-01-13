@@ -4,11 +4,14 @@ import PropTypes from 'prop-types';
 import Header from './Header';
 import Body from './Body';
 
+import {ThemeContext, themes} from './Context/theme-context';
+
 class Booking extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: []
+      list: [],
+      theme: themes.light
     }
   }
 
@@ -29,6 +32,14 @@ class Booking extends Component {
     }
   }
 
+  toggleTheme() {
+    this.setState(state => ({
+      theme: state.theme === themes.dark
+          ? themes.light
+          : themes.dark,
+    }));
+  }
+
   static childContextTypes = {
     fontWeight: PropTypes.number
   }
@@ -36,8 +47,10 @@ class Booking extends Component {
   render() {
     return (
       <div className="booking">
-        <Header loadListFunc={() => this.loadListFromLocalstorage()}/>
-        <Body list={this.state.list} />
+        <Header loadListFunc={() => this.loadListFromLocalstorage()} changeThemeFunc={() => this.toggleTheme()} />
+        <ThemeContext.Provider value={this.state.theme}>
+          <Body list={this.state.list} />
+        </ThemeContext.Provider>
       </div>
     );
   }
