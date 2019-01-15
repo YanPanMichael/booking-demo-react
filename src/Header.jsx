@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 class Header extends Component {
@@ -96,7 +97,9 @@ class Header extends Component {
                 </ul> */}
               </div>
             
-              <button type="button" className="btn btn-primary" onClick={this.unshiftRecord}>Add</button>
+              <Link type="button" className="btn btn-primary" to='./' onClick={this.unshiftRecord}>Add</Link>
+              <Link className="btn btn-primary" to='./part2'>part2</Link>
+              <Link className="btn btn-primary" to='./part3'>part3</Link>
 
             </form>
           </div>
