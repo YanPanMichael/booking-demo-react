@@ -54,7 +54,7 @@ class Booking extends Component {
         <Header loadListFunc={() => this.loadListFromLocalstorage()} changeThemeFunc={() => this.toggleTheme()} />
         <ThemeContext.Provider value={this.state.theme}>
           {/* <Body list={this.state.list} /> */}
-          <Route path="/" exact render={(props) => <Body {...props} list={this.state.list} />}></Route>
+          <Route path="/" render={(props) => <Body {...props} list={this.state.list} />}></Route>
         </ThemeContext.Provider>
         <hr />
         <Route path="/part2" component={Part2}></Route>
