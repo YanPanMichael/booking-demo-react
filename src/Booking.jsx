@@ -57,7 +57,7 @@ class Booking extends Component {
           <Route path="/" render={(props) => <Body {...props} list={this.state.list} />}></Route>
         </ThemeContext.Provider>
         <hr />
-        <Route path="/part2" component={Part2}></Route>
+        <Route path="/part2/:type/:id" exact component={Part2}></Route>
         <hr />
         <Route path="/part3" component={Part3}></Route>
       </div>

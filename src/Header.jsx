@@ -98,7 +98,7 @@ class Header extends Component {
               </div>
             
               <Link type="button" className="btn btn-primary" to='./' onClick={this.unshiftRecord}>Add</Link>
-              <Link className="btn btn-primary" to='./part2'>part2</Link>
+              <Link className="btn btn-primary" to='./part2/candy/25'>part2</Link>
               <Link className="btn btn-primary" to='./part3'>part3</Link>
 
             </form>
